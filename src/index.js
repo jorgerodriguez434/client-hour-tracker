@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import Form from "./components/form";
+import store from "./store";
+import { Provider } from "react-redux";
 
-const App = () => (
-  <div>
-    <h1> Marco's app </h1>
-  </div>
-);
+function App() {
+  return (
+    <Provider store={store}>
+      <div>
+        <Form />
+      </div>
+    </Provider>
+  );
+}
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
