@@ -9,4 +9,8 @@ body {
   .red-font {
     color: red;
   }
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
   
