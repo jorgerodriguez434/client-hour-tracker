@@ -9,7 +9,8 @@ export class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      clients: []
+      clients: [],
+      client: ""
     }
     this._name = React.createRef();
     this._lastName = React.createRef();
@@ -22,13 +23,16 @@ export class Form extends React.Component {
     this.props.dispatch(actions.setName(firstName));
     this.props.dispatch(actions.setLastName(lastName));
 
-    const client = {
-      firstName,
-      lastName,
-      hours: 0
-    };
 
-    this.props.dispatch(actions.addClient(client));
+    this.setState({
+          client: {
+            firstName,
+            lastName,
+            hours: 0
+          },
+          message: "has been added!"
+    });
+
     this._name.current.value = "";
     this._lastName.current.value = "";
     this.postRequestPromise();
@@ -36,10 +40,11 @@ export class Form extends React.Component {
   }
 
   postRequest = () => {
-
+      const firstName = this.props.state.firstName.toLowerCase();
+      const lastName = this.props.state.lastName.toLowerCase();
     const data = {
-      firstName: this.props.state.firstName,
-      lastName: this.props.state.lastName
+      firstName,
+      lastName
     }
   
     fetch(API_BASE_URL, {
@@ -88,6 +93,7 @@ export class Form extends React.Component {
             with your client!
           </p>
         </form>
+        <h2> {this.state.client.firstName} {this.state.client.lastName} {this.state.message}</h2>
       </div>
     );
   }

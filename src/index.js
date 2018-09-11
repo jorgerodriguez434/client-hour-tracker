@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Clients from "./components/clients";
 import SetRemove from "./components/set-remove";
+import SetUpdate from "./components/set-update";
 import "./index.css";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Form} />
             <Route exact path="/clients" component={Clients} />
-            <Route exact path="/set-remove" component={SetRemove} />
+            <Route exact path="/remove" component={SetRemove} />
+            <Route exact path="/update" component={SetUpdate} />
           </Switch>
         </div>
       </Provider>

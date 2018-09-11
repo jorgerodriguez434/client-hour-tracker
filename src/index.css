@@ -62,6 +62,9 @@ a {
 .link:hover {
 	background-color: #ff9980;
 }
+.bottom-border{
+  border-bottom: 1px solid grey;
+}
 
 
 

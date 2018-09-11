@@ -29,7 +29,7 @@ export class Clients extends React.Component {
       if(a.firstName > b.firstName) return 1;
       return 0;
     });
-    console.log(this.props.state);
+  
     return (
       <div>
         <Links/>
@@ -40,7 +40,6 @@ export class Clients extends React.Component {
               <li key={index}>
                 <Client hours={client.hours} clientId={client._id} firstName={client.firstName} lastName={client.lastName}/>
                </li>
-             
             );
           })}
         </ul>
