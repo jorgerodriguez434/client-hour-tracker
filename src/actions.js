@@ -28,3 +28,18 @@ export const updateHours = hours => ({
   type: constants.UPDATE_HOURS,
   hours
 });
+
+export const receiveClients = clients => ({
+    type: constants.RECEIVE_CLIENTS,
+    clients
+  });
+
+  export const setId = id => ({
+    type: constants.SET_ID,
+    id
+  });
+
+  export const setHours = hours => ({
+    type: constants.SET_HOURS,
+    hours
+  });

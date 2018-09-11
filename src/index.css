@@ -3,3 +3,73 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+button {
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 17px;
+	color: white;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: tomato;
+	font-size: 17px;
+	height: 50px;
+	width: 90%;
+	display: block;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+button:hover {
+	background-color: #ff9980;
+}
+
+input {
+	margin: auto;
+	height: 40px;
+	width: 90%;
+	background-color: #f2f2f2;
+  margin-bottom: 20px;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+.margin-bottom-20px{
+    margin-bottom: 40px;
+}
+.link {
+  padding: 10px;
+  color: white;
+}
+.link-group {
+	background-color: tomato;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: block;
+  overflow: hidden;
+
+}
+.link:hover {
+	background-color: #ff9980;
+}
+
+
+
+@media only screen and (min-width: 740px) {
+  button {
+		width: 200px;
+  }
+  input{
+    width: 500px;
+  }
+}

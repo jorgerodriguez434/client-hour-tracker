@@ -7,16 +7,18 @@
  */
 import * as constants from "./actions.constants";
 export const initialState = {
-  name: "",
+  firstName: "",
   lastName: "",
-  clients: []
+  clients: [],
+  id: "",
+  hours: 0
 };
 
 export const reducer = (state = initialState, action) => {
   console.log(`${action.type} has dispatched!`);
   if (action.type === constants.SET_NAME) {
     return Object.assign({}, state, {
-      name: action.name
+      firstName: action.name
     });
   }
 
@@ -29,6 +31,24 @@ export const reducer = (state = initialState, action) => {
   if (action.type === constants.ADD_CLIENT) {
     return Object.assign({}, state, {
       clients: [...state.clients, action.client]
+    });
+  }
+
+  if (action.type === constants.RECEIVE_CLIENTS) {
+    return Object.assign({}, state, {
+      clients: action.clients
+    });
+  }
+
+  if (action.type === constants.SET_ID) {
+    return Object.assign({}, state, {
+      id: action.id
+    });
+  }
+
+  if (action.type === constants.SET_HOURS) {
+    return Object.assign({}, state, {
+      hours: action.hours
     });
   }
 
