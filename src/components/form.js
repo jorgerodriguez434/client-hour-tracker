@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import { API_BASE_URL } from "../config";
 import Links from "./links";
+import { Redirect } from "react-router-dom";
 
 export class Form extends React.Component {
   constructor() {
