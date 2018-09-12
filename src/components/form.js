@@ -43,7 +43,7 @@ export class Form extends React.Component {
       this.setState({
         display: "clients"
       });
-    }, 1500);
+    }, 2000);
   };
 
   postRequest = () => {
