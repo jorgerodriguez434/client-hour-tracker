@@ -10,12 +10,13 @@ export class Form extends React.Component {
     super();
     this.state = {
       clients: [],
-      client: ""
-    }
+      client: "",
+      display: "landing"
+    };
     this._name = React.createRef();
     this._lastName = React.createRef();
   }
-  onSubmit = e =>  {
+  onSubmit = e => {
     e.preventDefault();
     console.log(`submit button has been clicked!`);
     const firstName = this._name.current.value;
@@ -23,38 +24,42 @@ export class Form extends React.Component {
     this.props.dispatch(actions.setName(firstName));
     this.props.dispatch(actions.setLastName(lastName));
 
-
     this.setState({
-          client: {
-            firstName,
-            lastName,
-            hours: "0"
-          },
-          message: "has been added!"
+      client: {
+        firstName,
+        lastName,
+        hours: "0"
+      },
+      message: "has been added!"
     });
 
     this._name.current.value = "";
     this._lastName.current.value = "";
     this.props.dispatch(actions.addClient(this.state.client));
     this.postRequestPromise();
-   
-  }
+
+    setTimeout(() => {
+      this.setState({
+        display: "clients"
+      });
+    }, 1500);
+  };
 
   postRequest = () => {
-      const firstName = this.props.state.firstName.toLowerCase();
-      const lastName = this.props.state.lastName.toLowerCase();
+    const firstName = this.props.state.firstName.toLowerCase();
+    const lastName = this.props.state.lastName.toLowerCase();
     const data = {
       firstName,
       lastName
-    }
-  
+    };
+
     fetch(API_BASE_URL, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
         //Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
+      }
     })
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
@@ -62,7 +67,6 @@ export class Form extends React.Component {
   };
 
   postRequestPromise = () => {
-
     const wait = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve();
@@ -70,15 +74,14 @@ export class Form extends React.Component {
     });
 
     wait.then(this.postRequest);
-
-  }
-
+  };
 
   render() {
-    
+
+if (this.state.display === "landing"){
     return (
       <div>
-        <Links/>
+        <Links />
         <form onSubmit={this.onSubmit}>
           <h1> Register a client </h1>
           <label htmlFor="client-name">Client Name</label>
@@ -95,11 +98,20 @@ export class Form extends React.Component {
             with your client!
           </p>
         </form>
-        <h2> {this.state.client.firstName} {this.state.client.lastName} {this.state.message}</h2>
+        <h2>
+          {" "}
+          {this.state.client.firstName} {this.state.client.lastName}{" "}
+          {this.state.message}
+        </h2>
       </div>
     );
   }
-}
+  if (this.state.display === "clients"){
+    return <Redirect to="/clients" />;
+  }
+
+  }//render
+}//class
 
 export const mapStateToProps = state => ({
   state
