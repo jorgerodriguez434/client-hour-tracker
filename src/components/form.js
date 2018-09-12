@@ -28,13 +28,14 @@ export class Form extends React.Component {
           client: {
             firstName,
             lastName,
-            hours: 0
+            hours: "0"
           },
           message: "has been added!"
     });
 
     this._name.current.value = "";
     this._lastName.current.value = "";
+    this.props.dispatch(actions.addClient(this.state.client));
     this.postRequestPromise();
    
   }
@@ -74,6 +75,7 @@ export class Form extends React.Component {
 
 
   render() {
+    
     return (
       <div>
         <Links/>
