@@ -24,6 +24,7 @@ export class Clients extends React.Component {
   }
 
   render = () => {
+ 
     this.props.state.clients.sort((a,b) => {
       if(a.firstName < b.firstName) return -1;
       if(a.firstName > b.firstName) return 1;

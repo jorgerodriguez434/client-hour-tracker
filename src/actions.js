@@ -30,16 +30,36 @@ export const updateHours = hours => ({
 });
 
 export const receiveClients = clients => ({
-    type: constants.RECEIVE_CLIENTS,
-    clients
+  type: constants.RECEIVE_CLIENTS,
+  clients
+});
+
+export const setId = id => ({
+  type: constants.SET_ID,
+  id
+});
+
+export const setHours = hours => ({
+  type: constants.SET_HOURS,
+  hours
+});
+
+export const setCaseHours = hours => ({
+  type: constants.SET_CASE_HOURS,
+  hours
+});
+
+export const setCaseDescription = description => ({
+  type: constants.SET_CASE_DESCRIPTION,
+  description
+});
+
+export const addCase = _case => ({
+    type: constants.ADD_CASE,
+    _case
   });
 
-  export const setId = id => ({
-    type: constants.SET_ID,
-    id
-  });
-
-  export const setHours = hours => ({
-    type: constants.SET_HOURS,
-    hours
+  export const setCaseName = caseName => ({
+    type: constants.ADD_CASE,
+    caseName
   });

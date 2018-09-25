@@ -12,12 +12,19 @@ export class SetUpdate extends React.Component {
     };
   }
 
+
+  onSubmit = e => {
+    e.preventDefault();
+    console.log(`submit button has been clicked!`);
+    setTimeout(this.update, 2000);
+  }
+
   update = () => {
     console.log("updating");
     const data = {
         firstName: this.props.state.firstName,
-        lastName: this.props.state.lastName,
-        hours: this.props.state.hours
+         lastName: this.props.state.lastName,
+         hours: this.props.state.hours
       };
     fetch(`${API_BASE_URL}/${this.props.state.id}`, {
       method: "PUT",
@@ -43,6 +50,10 @@ export class SetUpdate extends React.Component {
     }, 1500);
   };
 
+  updateRequestPromise = () => {
+
+  }
+
   cancel = () => {
     this.setState({
       display: "cancel"
@@ -50,7 +61,7 @@ export class SetUpdate extends React.Component {
   };
 
   handleFirstNameChange = e => {
-                this.props.dispatch(actions.setName(e.target.value))
+      this.props.dispatch(actions.setName(e.target.value))
   }
 
   handleLastNameChange = e => {
@@ -60,9 +71,8 @@ export class SetUpdate extends React.Component {
 handleHoursChange = e => {
     this.props.dispatch(actions.setHours(e.target.value));
 }
- //name: e.target.value
   render = () => {
-   
+    console.log(this.props.state);
     if (this.state.display === "landing") {
       return (
         <div>
@@ -73,7 +83,7 @@ handleHoursChange = e => {
               {this.props.state.firstName} {this.props.state.lastName}{" "}
             </p>
             <p>Hours: {this.props.state.hours} </p>
-            <form onSubmit={this.update}>
+            <form onSubmit={this.onSubmit}>
               <label htmlFor="client-name">Client Name</label>
               <input className="my-text" ref={this._name} value={this.props.state.firstName}  onChange={this.handleFirstNameChange} required />
 

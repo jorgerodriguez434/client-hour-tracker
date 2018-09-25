@@ -66,6 +66,16 @@ a {
   border-bottom: 1px solid grey;
 }
 
+.text-area{
+  margin: auto;
+	width: 90%;
+	background-color: #f2f2f2;
+  margin-bottom: 20px;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
 
 
 @media only screen and (min-width: 740px) {
@@ -73,6 +83,9 @@ a {
 		width: 200px;
   }
   input{
+    width: 500px;
+  }
+  .text-area{
     width: 500px;
   }
 }

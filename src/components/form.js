@@ -29,7 +29,7 @@ export class Form extends React.Component {
       client: {
         firstName,
         lastName,
-        hours: "0"
+        hours: 0
       },
       message: "has been added!"
     });
@@ -41,7 +41,7 @@ export class Form extends React.Component {
 
     setTimeout(() => {
       this.setState({
-        display: "clients"
+        display: "add-case"
       });
     }, 2000);
   };
@@ -64,7 +64,13 @@ export class Form extends React.Component {
     })
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
-      .then(response => console.log("Success:", response));
+      .then(response => {
+        console.log("Success:", response);
+        this.props.dispatch(actions.setId(response.client._id));
+        this.props.dispatch(actions.setName(response.client.firstName));
+        this.props.dispatch(actions.setLastName(response.client.lastName));
+        this.props.dispatch(actions.setHours(response.client.hours));
+      });
   };
 
   postRequestPromise = () => {
@@ -78,41 +84,39 @@ export class Form extends React.Component {
   };
 
   render() {
+    if (this.state.display === "landing") {
+      return (
+        <div>
+          <Links />
+          <form onSubmit={this.onSubmit}>
+            <h1> Register a client </h1>
+            <label htmlFor="client-name">Client Name</label>
+            <input className="my-text" ref={this._name} required />
 
-if (this.state.display === "landing"){
-    return (
-      <div>
-        <Links />
-        <form onSubmit={this.onSubmit}>
-          <h1> Register a client </h1>
-          <label htmlFor="client-name">Client Name</label>
-          <input className="my-text" ref={this._name} required />
+            <label htmlFor="client-last-name">Client Last Name</label>
+            <input className="my-text" ref={this._lastName} required />
 
-          <label htmlFor="client-last-name">Client Last Name</label>
-          <input className="my-text" ref={this._lastName} required />
+            <button> SUBMIT </button>
 
-          <button> SUBMIT </button>
-
-          <p>
+            <p>
+              {" "}
+              This is an app that keeps track of the hours that you have worked
+              with your client!
+            </p>
+          </form>
+          <h2>
             {" "}
-            This is an app that keeps track of the hours that you have worked
-            with your client!
-          </p>
-        </form>
-        <h2>
-          {" "}
-          {this.state.client.firstName} {this.state.client.lastName}{" "}
-          {this.state.message}
-        </h2>
-      </div>
-    );
-  }
-  if (this.state.display === "clients"){
-    return <Redirect to="/clients" />;
-  }
-
-  }//render
-}//class
+            {this.state.client.firstName} {this.state.client.lastName}{" "}
+            {this.state.message}
+          </h2>
+        </div>
+      );
+    }
+    if (this.state.display === "add-case") {
+      return <Redirect to="/add-case" />;
+    }
+  } //render
+} //class
 
 export const mapStateToProps = state => ({
   state

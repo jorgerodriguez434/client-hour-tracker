@@ -11,7 +11,13 @@ export const initialState = {
   lastName: "",
   clients: [],
   id: "",
-  hours: 0
+  hours: 0,
+  case: {
+    hours: 0,
+    name: "",
+    description: ""
+  },
+  cases: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -52,5 +58,34 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
+  if (action.type === constants.SET_CASE_HOURS) {
+    return Object.assign({}, state, {
+      case: {
+        hours: action.hours
+      }
+    });
+  }
+
+  if (action.type === constants.SET_CASE_DESCRIPTION) {
+    return Object.assign({}, state, {
+      case: {
+        description: action.description
+      }
+    });
+  }
+
+  if (action.type === constants.SET_CASE_DESCRIPTION) {
+    return Object.assign({}, state, {
+      cases: [...state.cases, action._case]
+    });
+  }
+
+  if (action.type === constants.SET_CASE_NAME) {
+    return Object.assign({}, state, {
+      case: {
+        name: action.caseName
+      }
+    });
+  }
   return state;
 };
