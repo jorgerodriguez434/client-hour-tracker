@@ -36,6 +36,9 @@ export class Client extends React.Component {
     this.setState({
       display: "show-cases"
     });
+    this.props.dispatch(actions.setName(this.props.firstName));
+    this.props.dispatch(actions.setLastName(this.props.lastName));
+    this.props.dispatch(actions.addCase(this.props.caseName, this.props.caseDescription));
   }
 
   render = () => {

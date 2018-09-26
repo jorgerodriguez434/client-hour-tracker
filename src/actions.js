@@ -65,7 +65,8 @@ export const setCase = (name, description) => ({
   description
 });
 
-export const addCase = _case => ({
+export const addCase = (caseName, caseDescription) => ({
     type: constants.ADD_CASE,
-    _case
+    caseName,
+    caseDescription
   });

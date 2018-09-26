@@ -77,7 +77,7 @@ export const reducer = (state = initialState, action) => {
 
   if (action.type === constants.ADD_CASE) {
     return Object.assign({}, state, {
-      cases: [...state.cases, action._case]
+      cases: [...state.cases, {name: action.caseName, description: action.caseDescription }]
     });
   }
 

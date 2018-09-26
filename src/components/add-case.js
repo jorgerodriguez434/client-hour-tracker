@@ -37,7 +37,11 @@ export class AddCase extends React.Component {
       case: {
           description: this.props.state.case.description,
           name: this.props.state.case.name
-      }
+      },
+      cases: [{
+        description: this.props.state.case.description,
+        name: this.props.state.case.name
+    }]
     };
 
     fetch(API_BASE_URL, {
