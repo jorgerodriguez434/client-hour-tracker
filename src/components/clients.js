@@ -28,10 +28,11 @@ export class Clients extends React.Component {
 
   componentDidMount= () => {
     this.fetchClients();
+    this.props.dispatch(actions.emptyCases());
   }
 
   render = () => {
-    console.log(this.props.state);
+    //console.log(this.props.state.clients);
     this.props.state.clients.sort((a,b) => {
       if(a.firstName < b.firstName) return -1;
       if(a.firstName > b.firstName) return 1;

@@ -38,10 +38,15 @@ export class AddCase extends React.Component {
           description: this.props.state.case.description,
           name: this.props.state.case.name
       },
-      cases: [{
+      cases: {
         description: this.props.state.case.description,
         name: this.props.state.case.name
-    }]
+      }
+      /**
+       * When I add a case, I need to add it in the array
+                during the add case phase at the beginning
+                So that is where you need to start
+       */
     };
 
     fetch(API_BASE_URL, {

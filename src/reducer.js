@@ -60,7 +60,7 @@ export const reducer = (state = initialState, action) => {
 
   if (action.type === constants.SET_CASE_HOURS) {
     return Object.assign({}, state, {
-      _case: {
+      case: {
         hours: action.hours
       }
     });
@@ -81,6 +81,11 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
+  if (action.type === constants.EMPTY_CASES) {
+    return Object.assign({}, state, {
+      cases: []
+    });
+  }
 
   return state;
 };

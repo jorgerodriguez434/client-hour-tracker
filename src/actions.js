@@ -70,3 +70,7 @@ export const addCase = (caseName, caseDescription) => ({
     caseName,
     caseDescription
   });
+
+  export const emptyCases = () => ({
+    type: constants.EMPTY_CASES,
+  });
