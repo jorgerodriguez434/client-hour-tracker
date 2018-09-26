@@ -60,8 +60,16 @@ export const reducer = (state = initialState, action) => {
 
   if (action.type === constants.SET_CASE_HOURS) {
     return Object.assign({}, state, {
-      case: {
+      _case: {
         hours: action.hours
+      }
+    });
+  }
+
+  if (action.type === constants.SET_CASE_NAME) {
+    return Object.assign({}, state, {
+      case: {
+        name: action.name
       }
     });
   }
@@ -74,18 +82,15 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === constants.SET_CASE_DESCRIPTION) {
-    return Object.assign({}, state, {
-      cases: [...state.cases, action._case]
-    });
-  }
-
-  if (action.type === constants.SET_CASE_NAME) {
+  if (action.type === constants.SET_CASE) {
     return Object.assign({}, state, {
       case: {
-        name: action.caseName
+        description: action.description,
+        name: action.name
       }
     });
   }
+
+
   return state;
 };

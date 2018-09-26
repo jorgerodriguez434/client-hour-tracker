@@ -50,10 +50,6 @@ export class SetUpdate extends React.Component {
     }, 1500);
   };
 
-  updateRequestPromise = () => {
-
-  }
-
   cancel = () => {
     this.setState({
       display: "cancel"

@@ -70,7 +70,7 @@ export class SetRemove extends React.Component {
     if (this.state.display === "removed") {
         return (
           <div>
-            <p> {this.state.message}</p>
+            <h1> {this.state.message}</h1>
           </div>
         );
       }

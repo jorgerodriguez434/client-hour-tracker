@@ -49,17 +49,23 @@ export const setCaseHours = hours => ({
   hours
 });
 
+export const setCaseName = name => ({
+  type: constants.SET_CASE_NAME,
+  name
+});
+
 export const setCaseDescription = description => ({
   type: constants.SET_CASE_DESCRIPTION,
+  description
+});
+
+export const setCase = (name, description) => ({
+  type: constants.SET_CASE,
+  name,
   description
 });
 
 export const addCase = _case => ({
     type: constants.ADD_CASE,
     _case
-  });
-
-  export const setCaseName = caseName => ({
-    type: constants.ADD_CASE,
-    caseName
   });

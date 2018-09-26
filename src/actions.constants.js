@@ -9,3 +9,5 @@ export const SET_CASE_DESCRIPTION = "SET_CASE_DESCRIPTION";
 export const SET_CASE_HOURS = "SET_CASE_HOURS";
 export const ADD_CASE = "ADD_CASE";
 export const SET_CASE_NAME = "SET_CASE_NAME";
+export const SET_CASE = "SET_CASE";
+

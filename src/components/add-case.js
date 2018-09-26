@@ -19,41 +19,51 @@ export class AddCase extends React.Component {
     console.log(`submit button has been clicked!`);
     const caseName = this._caseName.current.value;
     const caseDescription = this._caseDescription.current.value;
-    this.props.dispatch(actions.setCaseName(caseName));
-    this.props.dispatch(actions.setCaseDescription(caseDescription));
-
+    console.log(caseName);
+    console.log(caseDescription);
+    //this.props.dispatch(actions.setCaseDescription(caseDescription));
+    this.props.dispatch(actions.setCase(caseName, caseDescription));
     this._caseName.current.value = "";
-    this._caseDescription.current.value = "";
-    this.props.dispatch(actions.addClient(this.state.client));
-    this.updateRequestPromise();
+    this._caseDescription.current.value = ""; 
+    this.postRequestPromise();
   };
 
-  updateRequest = () => {
-    console.log("updating");
+  
+  postRequest = () => {
+    console.log("Post Request");
+    console.log(this.props.state);
+    const firstName = this.props.state.firstName.toLowerCase();
+    const lastName = this.props.state.lastName.toLowerCase();
     const data = {
-      firstName: this.props.state.firstName,
-      lastName: this.props.state.lastName,
-      hours: this.props.state.hours,
+      firstName,
+      lastName,
       case: {
-        name: this.props.state.caseName,
-        description: this.props.state.caseDescription,
-        hours: 0
+          description: this.props.state.case.description,
+          name: this.props.state.case.name
       }
     };
 
-    fetch(`${API_BASE_URL}/${this.props.state.id}`, {
-      method: "PUT",
+    fetch(API_BASE_URL, {
+      method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
+        //Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
-      .then(response => console.log("Success:", response));
+      .then(response => {
+        console.log("Success:", response);
+      })
+      .then( () => {
+              this.setState({
+                display: "clients"
+              });
+      });
   };
 
-  updateRequestPromise = () => {
+  postRequestPromise = () => {
     const wait = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve();
@@ -61,20 +71,10 @@ export class AddCase extends React.Component {
     });
 
     wait
-    .then(this.updateRequest)
-    .then(() => {
-      this.setState({
-        display: "clients"
-      });
-    });
+    .then(this.postRequest);
   };
-
-  componentDidMount = () => {
-    console.log(this.props.state.clients);
-  };
-
-  render = () => {
     
+  render = () => {
     if (this.state.display === "landing") {
       return (
         <div>
@@ -104,6 +104,10 @@ export class AddCase extends React.Component {
 
     if (this.state.display === "clients") {
       return <Redirect to="/clients" />;
+    }
+
+    if (this.state.display === "home") {
+      return <Redirect to="/" />;
     }
   }; //render
 }

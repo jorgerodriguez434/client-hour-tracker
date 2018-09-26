@@ -40,8 +40,10 @@ export class Client extends React.Component {
             {" "}
             {this.props.firstName} {this.props.lastName}{" "}
           </p>
+          <p> Case name: {this.props.caseName}</p>
+          <p> Case description: {this.props.caseDescription}</p>
           <p>Hours: {this.props.hours} </p>
-
+        
           <button onClick={this.setRemove}> REMOVE </button>
           <button onClick={this.setUpdate} className="margin-bottom-20px"> UPDATE </button>
         </div>

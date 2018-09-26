@@ -8,6 +8,13 @@ import Links from "./links";
 
 export class Clients extends React.Component {
 
+    constructor(){
+      super();
+      this.state = {
+        display: "landing"
+      }
+    }
+
   fetchClients = () => {
     console.log('fetching clients');
     fetch(API_BASE_URL)
@@ -24,13 +31,14 @@ export class Clients extends React.Component {
   }
 
   render = () => {
- 
+    console.log(this.props.state);
     this.props.state.clients.sort((a,b) => {
       if(a.firstName < b.firstName) return -1;
       if(a.firstName > b.firstName) return 1;
       return 0;
     });
   
+    if (this.state.display === "landing"){
     return (
       <div>
         <Links/>
@@ -39,7 +47,7 @@ export class Clients extends React.Component {
           {this.props.state.clients.map((client, index) => {
             return (
               <li key={index}>
-                <Client hours={client.hours} clientId={client._id} firstName={client.firstName} lastName={client.lastName}/>
+                <Client hours={client.hours} clientId={client._id} firstName={client.firstName} lastName={client.lastName} caseName={client.case.name} caseDescription={client.case.description}/>
                </li>
             );
           })}
@@ -47,6 +55,8 @@ export class Clients extends React.Component {
       </div>
     );
   }
+
+  }//render
 }
 
 export const mapStateToProps = state => ({
@@ -54,3 +64,4 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Clients);
+//caseName={client._case.name} caseDescription={client._case.description}

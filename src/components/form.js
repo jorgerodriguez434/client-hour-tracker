@@ -2,7 +2,7 @@ import React from "react";
 import "./form.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { API_BASE_URL } from "../config";
+//import { API_BASE_URL } from "../config";
 import Links from "./links";
 import { Redirect } from "react-router-dom";
 
@@ -36,8 +36,8 @@ export class Form extends React.Component {
 
     this._name.current.value = "";
     this._lastName.current.value = "";
-    this.props.dispatch(actions.addClient(this.state.client));
-    this.postRequestPromise();
+    //this.props.dispatch(actions.addClient(this.state.client));
+    //this was the error, if un-comment this, I will get the error
 
     setTimeout(() => {
       this.setState({
@@ -46,44 +46,8 @@ export class Form extends React.Component {
     }, 2000);
   };
 
-  postRequest = () => {
-    const firstName = this.props.state.firstName.toLowerCase();
-    const lastName = this.props.state.lastName.toLowerCase();
-    const data = {
-      firstName,
-      lastName
-    };
-
-    fetch(API_BASE_URL, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-        //Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-      .then(res => res.json())
-      .catch(error => console.error("Error:", error))
-      .then(response => {
-        console.log("Success:", response);
-        this.props.dispatch(actions.setId(response.client._id));
-        this.props.dispatch(actions.setName(response.client.firstName));
-        this.props.dispatch(actions.setLastName(response.client.lastName));
-        this.props.dispatch(actions.setHours(response.client.hours));
-      });
-  };
-
-  postRequestPromise = () => {
-    const wait = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve();
-      }, 1500);
-    });
-
-    wait.then(this.postRequest);
-  };
-
   render() {
+   
     if (this.state.display === "landing") {
       return (
         <div>
