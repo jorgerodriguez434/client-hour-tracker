@@ -66,28 +66,18 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === constants.SET_CASE_NAME) {
-    return Object.assign({}, state, {
-      case: {
-        name: action.name
-      }
-    });
-  }
-
-  if (action.type === constants.SET_CASE_DESCRIPTION) {
-    return Object.assign({}, state, {
-      case: {
-        description: action.description
-      }
-    });
-  }
-
   if (action.type === constants.SET_CASE) {
     return Object.assign({}, state, {
       case: {
         description: action.description,
         name: action.name
       }
+    });
+  }
+
+  if (action.type === constants.ADD_CASE) {
+    return Object.assign({}, state, {
+      cases: [...state.cases, action._case]
     });
   }
 

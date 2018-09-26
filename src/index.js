@@ -8,6 +8,7 @@ import Clients from "./components/clients";
 import SetRemove from "./components/set-remove";
 import SetUpdate from "./components/set-update";
 import AddCase from "./components/add-case";
+import ShowCases from "./components/show-cases";
 import "./index.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route exact path="/remove" component={SetRemove} />
             <Route exact path="/update" component={SetUpdate} />
             <Route exact path="/add-case" component={AddCase} />
+            <Route exact path="/cases" component={ShowCases} />
           </Switch>
         </div>
       </Provider>

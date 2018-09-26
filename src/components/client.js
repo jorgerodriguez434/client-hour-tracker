@@ -32,6 +32,12 @@ export class Client extends React.Component {
     this.props.dispatch(actions.setHours(this.props.hours));
   };
 
+  showCases = () => {
+    this.setState({
+      display: "show-cases"
+    });
+  }
+
   render = () => {
     if (this.state.display === "landing") {
       return (
@@ -40,12 +46,11 @@ export class Client extends React.Component {
             {" "}
             {this.props.firstName} {this.props.lastName}{" "}
           </p>
-          <p> Case name: {this.props.caseName}</p>
-          <p> Case description: {this.props.caseDescription}</p>
           <p>Hours: {this.props.hours} </p>
         
           <button onClick={this.setRemove}> REMOVE </button>
-          <button onClick={this.setUpdate} className="margin-bottom-20px"> UPDATE </button>
+          <button onClick={this.setUpdate} > UPDATE </button>
+          <button onClick={this.showCases} className="margin-bottom-20px"> CASES </button>
         </div>
       );
     } 
@@ -56,6 +61,9 @@ export class Client extends React.Component {
 
     if (this.state.display === "set update") {
         return <Redirect to="/update" />;
+      }
+      if (this.state.display === "show-cases") {
+        return <Redirect to="/cases" />;
       }
   };
 }

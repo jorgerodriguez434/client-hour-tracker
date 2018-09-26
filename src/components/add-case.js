@@ -19,9 +19,6 @@ export class AddCase extends React.Component {
     console.log(`submit button has been clicked!`);
     const caseName = this._caseName.current.value;
     const caseDescription = this._caseDescription.current.value;
-    console.log(caseName);
-    console.log(caseDescription);
-    //this.props.dispatch(actions.setCaseDescription(caseDescription));
     this.props.dispatch(actions.setCase(caseName, caseDescription));
     this._caseName.current.value = "";
     this._caseDescription.current.value = ""; 
