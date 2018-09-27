@@ -40,11 +40,12 @@ export class Client extends React.Component {
     this.props.dispatch(actions.setName(this.props.firstName));
     this.props.dispatch(actions.setLastName(this.props.lastName));
     this.props.dispatch(actions.setCase(this.props.caseName, this.props.caseDescription));
-    this.props.dispatch(actions.addCase(this.props.caseName, this.props.caseDescription));
+   // this.props.dispatch(actions.addCase(this.props.caseName, this.props.caseDescription));
+    this.props.dispatch(actions.receiveCases(this.props.cases));
   }
 
   render = () => {
-    //console.log(this.props.state.clients);
+     // console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <div className="bottom-border">

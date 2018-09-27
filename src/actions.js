@@ -74,3 +74,8 @@ export const addCase = (caseName, caseDescription) => ({
   export const emptyCases = () => ({
     type: constants.EMPTY_CASES,
   });
+
+  export const receiveCases = _cases=> ({
+    type: constants.RECEIVE_CASES,
+    _cases
+  });

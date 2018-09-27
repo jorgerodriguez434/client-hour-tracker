@@ -11,4 +11,5 @@ export const ADD_CASE = "ADD_CASE";
 export const SET_CASE_NAME = "SET_CASE_NAME";
 export const SET_CASE = "SET_CASE";
 export const EMPTY_CASES = "EMPTY_CASES";
+export const RECEIVE_CASES = "RECEIVE_CASES";
 

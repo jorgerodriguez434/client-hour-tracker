@@ -87,5 +87,11 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
+  if (action.type === constants.RECEIVE_CASES) {
+    return Object.assign({}, state, {
+      cases: action._cases
+    });
+  }
+
   return state;
 };

@@ -38,7 +38,7 @@ export class ShowCases extends React.Component {
 
 
     render = () => {
-      console.log(this.props.state)
+     console.log(this.props.state.cases);
       if (this.state.display === "landing"){
        return ( <div> 
 
